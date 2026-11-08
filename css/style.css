@@ -77,3 +77,31 @@ footer {
   border-top: 1px solid var(--border);
   margin-top: 3rem;
 }
+.portfolio-nav {
+  display: flex;
+  gap: 1rem;
+  margin: 1.5rem 0 1rem 0;
+}
+
+.nav-btn {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+}
+
+.nav-btn:hover {
+  color: var(--text-main);
+  border-color: var(--accent);
+}
+
+.nav-btn.active {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: var(--accent);
+  color: var(--accent);
+}
