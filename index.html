@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yosef Moshe | Security Engineering Portfolio</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true, theme: 'dark'});</script>
+</head>
+<body>
+
+  <header class="container">
+    <div class="header-content">
+      <h1>Yosef Moshe</h1>
+      <p class="subtitle">Security Engineering Portfolio: Firewalls, Identity & SIEM</p>
+      <div class="tags">
+        <span>pfSense</span><span>Suricata</span><span>Samba AD</span><span>Wazuh SIEM</span>
+        <span>FortiGate</span><span>AWS</span><span>Docker</span><span>Python</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Project 1 -->
+    <section class="card">
+      <div class="project-header">
+        <h2>Project 1: pitaworld AD Lab & Wazuh SIEM</h2>
+        <span class="badge">Enterprise Homelab</span>
+      </div>
+      <p class="desc">A segmented <code>192.168.3.0/24</code> enterprise environment simulating Active Directory, rigorous firewall filtering, and automated host isolation.</p>
+      
+      <div class="mermaid">
+        flowchart TD
+          Internet["Internet (VirtualBox NAT)"] --> pfSense["pitasense (.2)<br/>pfSense + Suricata + pfBlockerNG"]
+          pitakli["pitakli<br/>Kali Attack Box"] -.->|Adversary Emulation| pfSense
+          pfSense --> DC["PtaSDC (.10)<br/>Samba AD DC (Ubuntu)"]
+          pfSense --> WIN["Windows Client<br/>Domain Member + Agent"]
+          pfSense --> UB["Ubuntu Client<br/>Domain Member + Agent"]
+          pfSense --> WAZ["pitawazuh (.11)<br/>Wazuh Manager"]
+          
+          DC -.->|Event Logs| WAZ
+          WIN -.->|Sysmon & Agent| WAZ
+          UB -.->|Auditd & Agent| WAZ
+          pfSense -.->|Syslog 514/tcp| WAZ
+
+          classDef srv fill:#1e293b,stroke:#38bdf8,stroke-width:2px,color:#fff;
+          classDef sec fill:#0f172a,stroke:#f43f5e,stroke-width:2px,color:#fff;
+          class DC,WIN,UB,WAZ srv;
+          class pfSense,pitakli sec;
+      </div>
+
+      <div class="details">
+        <h3>Firewall Policy & Defense Highlights</h3>
+        <ul>
+          <li><strong>Segmentation:</strong> pfBlockerNG threat lists evaluated first, followed by explicit ports for Kerberos (88), LDAP/S (389/636), and SMB (445).</li>
+          <li><strong>Active Response:</strong> Automated containment executing <code>firewall-drop</code> and <code>host-deny</code> for 60 seconds on custom Wazuh rule triggers.</li>
+          <li><strong>Integrity & Posture:</strong> FIM monitoring critical system directories (<code>/etc</code>, <code>/bin</code>, <code>/boot</code>) with continuous SCA benchmarks.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Project 2 -->
+    <section class="card">
+      <div class="project-header">
+        <h2>Project 2: Honeypot to Firewall Threat-Feed Pipeline</h2>
+        <span class="badge">Threat Intelligence</span>
+      </div>
+      <p class="desc">Automated intelligence loop translating raw AWS honeypot probes into dynamic, actionable firewall blocking at the perimeter.</p>
+      
+      <div class="diagram-center">
+        <img src="assets/images/honeypot-pipeline.svg" alt="Threat Intelligence Pipeline" style="max-width:100%; height:auto;">
+      </div>
+
+      <div class="details">
+        <h3>Pipeline Workflow</h3>
+        <ol>
+          <li><strong>Capture:</strong> T-Pot honeypot on AWS logs incoming attack probes.</li>
+          <li><strong>Verify:</strong> Python script queries AbuseIPDB API; keeps malicious IPs with &gt;90% confidence.</li>
+          <li><strong>Publish:</strong> Docker container serves <code>malicious_ips.txt</code> over HTTP (port 8080).</li>
+          <li><strong>Block:</strong> FortiGate external threat feed consumes the list to enforce a WAN-to-LAN DENY policy.</li>
+          <li><strong>Alert:</strong> Wazuh rule 100200 fires alerts on inbound connection attempts matching the feed.</li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <p>Built with GitHub Pages • All attack traffic strictly contained within owned lab environments.</p>
+  </footer>
+
+</body>
+</html>
