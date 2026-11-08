@@ -124,6 +124,15 @@
     .achievements strong { color: #f1f5f9; display: block; font-size: 1rem; margin-bottom: 0.25rem; }
     .achievements span { color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; display: block; }
 
+    /* Project 3 Specific Styling */
+    .section-icon { width: 28px; height: 28px; flex-shrink: 0; }
+    .project-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
+    .title-with-icon { display: flex; align-items: center; gap: 0.75rem; }
+    .badge { padding: 0.35rem 0.85rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; border: 1px solid; }
+    .feature-bullets { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 2rem; }
+    .feature-item { display: flex; align-items: flex-start; gap: 1rem; }
+    .feature-marker { width: 8px; height: 8px; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0; }
+
     /* Mermaid Wrapper */
     .mermaid { width: 100%; display: flex; justify-content: center; }
 
@@ -159,9 +168,6 @@
       transform: translateY(-4px);
       border-color: var(--primary);
     }
-    .badge-purple + * + * + .proof-section .proof-gallery figure:hover {
-      border-color: var(--ai-color);
-    }
     .proof-gallery img {
       width: 100%;
       height: 200px;
@@ -171,9 +177,7 @@
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       transition: opacity 0.3s ease;
     }
-    .proof-gallery figure:hover img {
-      opacity: 0.9;
-    }
+    .proof-gallery figure:hover img { opacity: 0.9; }
     .proof-gallery figcaption {
       padding: 1rem;
       font-size: 0.85rem;
@@ -201,6 +205,7 @@
 </head>
 <body>
 
+  <!-- Unified Header -->
   <header class="container">
     <div class="status-badge">
       <span class="status-dot"></span> Active Defense, Threat Telemetry &amp; AI SOC
@@ -222,6 +227,7 @@
     <div class="tags">
       <span class="tag">pfSense</span>
       <span class="tag">Wazuh SIEM</span>
+      <span class="tag">Suricata</span>
       <span class="tag">Local LLM (Ollama)</span>
       <span class="tag">AbuseIPDB API</span>
       <span class="tag">Samba AD-DC</span>
@@ -229,37 +235,6 @@
       <span class="tag">Active Response</span>
       <span class="tag">MITRE ATT&amp;CK</span>
       <span class="tag">Python</span>
-  <header class="container header-container">
-    <div class="header-content">
-      <div class="profile-meta">
-        <span class="status-indicator"><span class="status-dot"></span> Active Defense &amp; Threat Telemetry</span>
-      </div>
-      <h1>Yosef Moshe</h1>
-      <p class="subtitle">Security Engineering Portfolio: Firewalls, Identity &amp; SIEM</p>
-      
-      <!-- Segmented Navigation Dock -->
-      <nav class="segmented-dock" aria-label="Portfolio Switcher">
-        <a href="index.html" class="dock-btn active">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          SOC &amp; Security Engineering
-        </a>
-        <a href="it-networking.html" class="dock-btn">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          Cloud, IT &amp; Infrastructure
-        </a>
-      </nav>
-
-      <div class="tags">
-        <span>pfSense</span>
-        <span>Suricata</span>
-        <span>Samba AD</span>
-        <span>Wazuh SIEM</span>
-        <span>FortiGate</span>
-        <span>AWS</span>
-        <span>Docker</span>
-        <span>Python</span>
-      </div>
-
     </div>
   </header>
 
@@ -343,12 +318,10 @@
         <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><circle cx="12" cy="12" r="3"/></svg> Live Execution Telemetry</h3>
         <div class="proof-gallery">
           <figure>
-            <!-- User image reference -->
             <a href="Auto_IP_scan_2.png" target="_blank"><img src="Auto_IP_scan_2.png" alt="Wazuh Document Details - Rule 100410"></a>
             <figcaption>Wazuh SIEM correctly decoding BSD filterlog headers and extracting pfSense dropped IPs.</figcaption>
           </figure>
           <figure>
-            <!-- User image reference -->
             <a href="Auto_IP_scan.png" target="_blank"><img src="Auto_IP_scan.png" alt="AbuseIPDB List Output"></a>
             <figcaption>AbuseIPDB automated integration returning a 100% confidence score for the attacking IP.</figcaption>
           </figure>
@@ -431,78 +404,75 @@
           </div>
         </div>
       </div>
-
       
       <!-- Proof Gallery for Project 2 -->
       <div class="proof-section">
         <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><circle cx="12" cy="12" r="3"/></svg> Autonomous AI Execution Proofs</h3>
         <div class="proof-gallery">
           <figure>
-            <!-- User image reference -->
             <a href="Wazuh_Ai_reulst_from_server.jpg" target="_blank"><img src="Wazuh_Ai_reulst_from_server.jpg" alt="Python AI Triage Engine"></a>
             <figcaption>soc_ai_agent.py parsing attacks, assigning MITRE T1110, and dynamically protecting core IPs via whitelist.</figcaption>
           </figure>
           <figure>
-            <!-- User image reference -->
             <a href="SOC_Ai_report.png" target="_blank"><img src="SOC_Ai_report.png" alt="Generated Markdown Report"></a>
             <figcaption>Llama 3 outputting fully structured professional Markdown incident reports automatically.</figcaption>
           </figure>
           <figure>
-            <!-- User image reference -->
             <a href="Wazuh_Ai_reulst.jpg" target="_blank"><img src="Wazuh_Ai_reulst.jpg" alt="Wazuh Dashboard AI Loopback"></a>
             <figcaption>AI incident verdicts seamlessly fed back into the Wazuh SIEM Dashboard via Rule 100600.</figcaption>
           </figure>
         </div>
       </div>
     </article>
-=======
-    </section>
-    <!-- Project 3: AI SOC Co-Pilot & Detection Engineering -->
-    <section class="card" style="border-left: 3px solid #a855f7;">
-      <div class="project-header">
-        <div class="title-with-icon">
-          <svg class="section-icon" style="color: #a855f7;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
-          </svg>
-          <h2>Project 3: AI-Driven SOC Telemetry &amp; Rule Synthesis</h2>
-        </div>
-        <span class="badge" style="color: #a855f7; border-color: rgba(168, 85, 247, 0.3); background: rgba(168, 85, 247, 0.1);">
-          AI &amp; SecOps
-        </span>
-      </div>
-      <p class="desc">
-        Automated SOC pipeline using LLM agents to ingest raw telemetry, isolate anomalous attack vectors, and automatically generate validated Wazuh and Suricata detection rules.
-      </p>
 
-      <div class="feature-bullets">
-        <div class="feature-item">
-          <div class="feature-marker" style="background: #a855f7; box-shadow: 0 0 6px #a855f7;"></div>
-          <div>
-            <strong>Automated Event Ingestion:</strong> Normalizes unstructured syslog-ng, firewall drops, and Wazuh alerts into LLM context windows to extract actionable indicators of compromise (IoCs).
+    <!-- Project 3: Formatted to match Project 1 & 2 Card Style -->
+    <article class="project-card" style="border-left: 3px solid #a855f7;">
+      <div class="project-content" style="padding: 3rem 4rem;">
+        <div class="project-header">
+          <div class="title-with-icon">
+            <svg class="section-icon" style="color: #a855f7;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+            </svg>
+            <h2 class="project-title" style="margin-bottom: 0;">AI-Driven SOC Telemetry &amp; Rule Synthesis</h2>
+          </div>
+          <span class="badge" style="color: #a855f7; border-color: rgba(168, 85, 247, 0.3); background: rgba(168, 85, 247, 0.1);">
+            AI &amp; SecOps
+          </span>
+        </div>
+        
+        <p class="project-desc" style="margin-bottom: 2rem;">
+          Automated SOC pipeline using LLM agents to ingest raw telemetry, isolate anomalous attack vectors, and automatically generate validated Wazuh and Suricata detection rules.
+        </p>
+
+        <div class="feature-bullets">
+          <div class="feature-item">
+            <div class="feature-marker" style="background: #a855f7; box-shadow: 0 0 6px #a855f7;"></div>
+            <div>
+              <strong>Automated Event Ingestion:</strong> Normalizes unstructured syslog-ng, firewall drops, and Wazuh alerts into LLM context windows to extract actionable indicators of compromise (IoCs).
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-marker" style="background: #38bdf8; box-shadow: 0 0 6px #38bdf8;"></div>
+            <div>
+              <strong>Dynamic Rule Synthesis:</strong> Translates verified attack chains directly into tuned XML detection rules for Wazuh agents and Suricata signatures, mitigating rule fatigue.
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-marker" style="background: #10b981; box-shadow: 0 0 6px #10b981;"></div>
+            <div>
+              <strong>Incident Triage Summaries:</strong> Generates executive and Tier-2 incident briefs mapped to MITRE ATT&amp;CK tactics within seconds of alert escalation.
+            </div>
           </div>
         </div>
-        <div class="feature-item">
-          <div class="feature-marker" style="background: #38bdf8; box-shadow: 0 0 6px #38bdf8;"></div>
-          <div>
-            <strong>Dynamic Rule Synthesis:</strong> Translates verified attack chains directly into tuned XML detection rules for Wazuh agents and Suricata signatures, mitigating rule fatigue.
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-marker" style="background: #10b981; box-shadow: 0 0 6px #10b981;"></div>
-          <div>
-            <strong>Incident Triage Summaries:</strong> Generates executive and Tier-2 incident briefs mapped to MITRE ATT&amp;CK tactics within seconds of alert escalation.
-          </div>
+
+        <div class="tags" style="justify-content: flex-start; margin-top: 2rem;">
+          <span class="tag">Python</span>
+          <span class="tag">Wazuh Rules XML</span>
+          <span class="tag">Suricata Signatures</span>
+          <span class="tag">LLM Agent / API</span>
         </div>
       </div>
-
-      <div class="card-footer" style="margin-top: 1.5rem; display: flex; gap: 8px; flex-wrap: wrap;">
-        <span class="badge" style="background: rgba(255,255,255,0.05); color: #cbd5e1; border-color: var(--border);">Python</span>
-        <span class="badge" style="background: rgba(255,255,255,0.05); color: #cbd5e1; border-color: var(--border);">Wazuh Rules XML</span>
-        <span class="badge" style="background: rgba(255,255,255,0.05); color: #cbd5e1; border-color: var(--border);">Suricata Signatures</span>
-        <span class="badge" style="background: rgba(255,255,255,0.05); color: #cbd5e1; border-color: var(--border);">LLM Agent / API</span>
-      </div>
-    </section>
-
+    </article>
 
   </main>
 
