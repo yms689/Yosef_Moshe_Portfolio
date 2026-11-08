@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -9,181 +9,429 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="css/style.css">
   <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
   <script>
     mermaid.initialize({
       startOnLoad: true,
-      theme: 'dark',
+      theme: 'base',
       themeVariables: {
-        darkMode: true,
-        background: '#090d16',
-        primaryColor: '#1e293b',
+        background: 'transparent',
+        primaryColor: '#0f172a',
         primaryTextColor: '#f8fafc',
         primaryBorderColor: '#38bdf8',
         lineColor: '#64748b',
-        secondaryColor: '#0f172a',
-        tertiaryColor: '#111827'
+        secondaryColor: '#1e293b',
+        tertiaryColor: '#111827',
+        fontFamily: 'Inter, sans-serif'
       }
     });
   </script>
+
+  <style>
+    /* Reset & Base Variables */
+    :root {
+      --bg-color: #030712;
+      --card-bg: rgba(15, 23, 42, 0.4);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --primary: #38bdf8;
+      --ai-color: #d946ef;
+      --success: #10b981;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      background-image:
+        radial-gradient(circle at 15% 0%, rgba(56, 189, 248, 0.08), transparent 30%),
+        radial-gradient(circle at 85% 60%, rgba(217, 70, 239, 0.05), transparent 30%),
+        radial-gradient(circle at 50% 100%, rgba(16, 185, 129, 0.05), transparent 40%);
+      background-attachment: fixed;
+    }
+
+    .container { max-width: 1300px; margin: 0 auto; padding: 0 2rem; }
+
+    /* Header / Hero Section */
+    header { padding: 6rem 0 4rem 0; text-align: center; border-bottom: 1px solid var(--border-color); }
+
+    .status-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(16, 185, 129, 0.1); color: var(--success);
+      padding: 0.4rem 1rem; border-radius: 999px; font-size: 0.85rem; font-weight: 600;
+      border: 1px solid rgba(16, 185, 129, 0.2); margin-bottom: 1.5rem;
+    }
+    .status-dot { width: 8px; height: 8px; background-color: var(--success); border-radius: 50%; box-shadow: 0 0 8px var(--success); }
+
+    h1 {
+      font-size: 4rem; font-weight: 800; letter-spacing: -0.05em; margin-bottom: 1rem;
+      background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .subtitle { font-size: 1.25rem; color: var(--text-muted); max-width: 700px; margin: 0 auto 2.5rem auto; }
+
+    /* Segmented Navigation */
+    .segmented-dock {
+      display: inline-flex; background: rgba(255, 255, 255, 0.03); padding: 0.35rem; border-radius: 999px;
+      margin-bottom: 3rem; border: 1px solid var(--border-color); backdrop-filter: blur(10px);
+    }
+    .dock-btn {
+      display: flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.5rem; border-radius: 999px;
+      color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: all 0.3s ease;
+    }
+    .dock-btn.active { background: rgba(255, 255, 255, 0.1); color: var(--text-main); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+    .dock-btn:hover:not(.active) { color: #cbd5e1; background: rgba(255, 255, 255, 0.05); }
+
+    /* Tech Stack Tags */
+    .tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; max-width: 900px; margin: 0 auto; }
+    .tag {
+      background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.1); padding: 0.4rem 1rem;
+      border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #cbd5e1; transition: all 0.3s ease;
+    }
+    .tag:hover { border-color: var(--primary); color: var(--primary); box-shadow: 0 0 15px rgba(56, 189, 248, 0.15); transform: translateY(-2px); }
+
+    /* Projects Grid Layout */
+    .projects-section { padding: 5rem 0; display: flex; flex-direction: column; gap: 5rem; }
+    .project-card {
+      background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 24px;
+      overflow: hidden; backdrop-filter: blur(12px); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+    }
+    .project-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; }
+    .project-content { padding: 4rem; display: flex; flex-direction: column; justify-content: center; }
+    .project-visual {
+      background: rgba(0, 0, 0, 0.2); border-left: 1px solid var(--border-color);
+      display: flex; align-items: center; justify-content: center; padding: 2rem;
+    }
+
+    .category-badge {
+      display: inline-block; padding: 0.4rem 1rem; border-radius: 6px; font-size: 0.8rem;
+      font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1.5rem; align-self: flex-start;
+    }
+    .badge-blue { background: rgba(56, 189, 248, 0.1); color: var(--primary); border: 1px solid rgba(56, 189, 248, 0.2); }
+    .badge-purple { background: rgba(217, 70, 239, 0.1); color: var(--ai-color); border: 1px solid rgba(217, 70, 239, 0.2); }
+
+    .project-title { font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem; line-height: 1.2; }
+    .project-desc { color: var(--text-muted); margin-bottom: 2.5rem; font-size: 1.05rem; }
+
+    /* Achievements List */
+    .achievements { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; }
+    .achievements li { display: flex; align-items: flex-start; gap: 1rem; }
+    .achievements li svg { flex-shrink: 0; width: 24px; height: 24px; color: var(--success); }
+    .achievements strong { color: #f1f5f9; display: block; font-size: 1rem; margin-bottom: 0.25rem; }
+    .achievements span { color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; display: block; }
+
+    /* Mermaid Wrapper */
+    .mermaid { width: 100%; display: flex; justify-content: center; }
+
+    /* Proof Gallery Section */
+    .proof-section {
+      padding: 3rem 4rem;
+      border-top: 1px solid var(--border-color);
+      background: rgba(0, 0, 0, 0.15);
+    }
+    .proof-section h3 {
+      font-size: 1.2rem;
+      color: #f1f5f9;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .proof-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .proof-gallery figure {
+      margin: 0;
+      background: #000;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+    .proof-gallery figure:hover {
+      transform: translateY(-4px);
+      border-color: var(--primary);
+    }
+    .badge-purple + * + * + .proof-section .proof-gallery figure:hover {
+      border-color: var(--ai-color);
+    }
+    .proof-gallery img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      object-position: top left;
+      display: block;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: opacity 0.3s ease;
+    }
+    .proof-gallery figure:hover img {
+      opacity: 0.9;
+    }
+    .proof-gallery figcaption {
+      padding: 1rem;
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      text-align: center;
+      line-height: 1.4;
+      font-weight: 500;
+    }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--border-color); padding: 3rem 0; text-align: center; color: var(--text-muted); font-size: 0.9rem; }
+    .footer-links { margin-top: 1rem; }
+    .footer-links a { color: var(--primary); text-decoration: none; margin: 0 0.5rem; transition: color 0.2s; }
+    .footer-links a:hover { color: #7dd3fc; }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .project-grid { grid-template-columns: 1fr; }
+      .project-visual { border-left: none; border-top: 1px solid var(--border-color); padding: 4rem 2rem; }
+      .project-content { padding: 3rem; }
+      .proof-section { padding: 2rem; }
+      h1 { font-size: 3rem; }
+    }
+  </style>
 </head>
 <body>
 
-  <div class="ambient-glow"></div>
+  <header class="container">
+    <div class="status-badge">
+      <span class="status-dot"></span> Active Defense, Threat Telemetry &amp; AI SOC
+    </div>
+    
+    <h1>Yosef Moshe</h1>
+    <p class="subtitle">Security Engineering Portfolio: Firewalls, Identity, SIEM &amp; Autonomous AI Triage</p>
+    
+    <nav class="segmented-dock" aria-label="Portfolio Switcher">
+      <a href="index.html" class="dock-btn active">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        SOC &amp; Security Engineering
+      </a>
+      <a href="it-networking.html" class="dock-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        Cloud, AI &amp; Infrastructure
+      </a>
+    </nav>
 
-  <header class="container header-container">
-    <div class="header-content">
-      <div class="profile-meta">
-        <span class="status-indicator"><span class="status-dot"></span> Active Defense &amp; Threat Telemetry</span>
-      </div>
-      <h1>Yosef Moshe</h1>
-      <p class="subtitle">Security Engineering Portfolio: Firewalls, Identity &amp; SIEM</p>
-      
-      <!-- Segmented Navigation Dock -->
-      <nav class="segmented-dock" aria-label="Portfolio Switcher">
-        <a href="index.html" class="dock-btn active">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          SOC &amp; Security Engineering
-        </a>
-        <a href="it-networking.html" class="dock-btn">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          Cloud, AI &amp; Infrastructure
-        </a>
-      </nav>
-
-      <div class="tags">
-        <span>pfSense</span>
-        <span>Suricata</span>
-        <span>Samba AD</span>
-        <span>Wazuh SIEM</span>
-        <span>FortiGate</span>
-        <span>AWS</span>
-        <span>Docker</span>
-        <span>Python</span>
-      </div>
+    <div class="tags">
+      <span class="tag">pfSense</span>
+      <span class="tag">Wazuh SIEM</span>
+      <span class="tag">Local LLM (Ollama)</span>
+      <span class="tag">AbuseIPDB API</span>
+      <span class="tag">Samba AD-DC</span>
+      <span class="tag">CDB Hash Tables</span>
+      <span class="tag">Active Response</span>
+      <span class="tag">MITRE ATT&amp;CK</span>
+      <span class="tag">Python</span>
     </div>
   </header>
 
-  <main class="container">
+  <main class="container projects-section">
 
     <!-- Project 1 -->
-    <section class="card">
-      <div class="project-header">
-        <div class="title-with-icon">
-          <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-          <h2>Project 1: pitaworld AD Lab &amp; Wazuh SIEM</h2>
+    <article class="project-card">
+      <div class="project-grid">
+        <div class="project-content">
+          <div class="category-badge badge-blue">Perimeter &amp; Detection Engineering</div>
+          <h2 class="project-title">Stateful Telemetry &amp; Threat Intelligence Loop</h2>
+          <p class="project-desc">A segmented enterprise lab combining pfSense stateful firewall inspection, Samba Active Directory identity telemetry, and an automated threat intelligence loop.</p>
+          
+          <ul class="achievements">
+            <li>
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <div>
+                <strong>BSD filterlog Parsing (OS_Regex)</strong>
+                <span>Engineered custom parent/child decoders in Wazuh, resolving complex RFC-5424 header mismatches to cleanly extract IPs and ports across TCP/UDP/ICMP.</span>
+              </div>
+            </li>
+            <li>
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <div>
+                <strong>Stateful Timeframe Correlation</strong>
+                <span>Configured 60-second correlation windows to filter background noise, triggering threat intel API queries only on persistent adversary scans.</span>
+              </div>
+            </li>
+            <li>
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <div>
+                <strong>Dynamic CDB Compilation</strong>
+                <span>Automated Python integration that queries AbuseIPDB, appends confirmed threats (>20% score), and instantly compiles binary .cdb lists in memory.</span>
+              </div>
+            </li>
+            <li>
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <div>
+                <strong>Bi-Directional Feed Blocking</strong>
+                <span>Deployed Level 12 SIEM rules to instantly isolate inbound attacks from verified actors or internal endpoints attempting outbound C2 communication.</span>
+              </div>
+            </li>
+          </ul>
         </div>
-        <span class="badge">Enterprise Homelab</span>
+        
+        <div class="project-visual">
+          <div class="mermaid">
+            flowchart TD
+              Kali["<b>pitakli</b><br/>(Kali Attacker)"]
+              
+              subgraph Perimeter ["Perimeter & Identity"]
+                pfSense["<b>pitasense</b> (pfSense)<br/>Table: wazuh_blacklist"]
+                DC["<b>dcpita</b> (Samba AD-DC)"]
+              end
+
+              subgraph Detection ["SIEM & Threat Intel"]
+                WAZ["<b>pitawazuh</b><br/>Wazuh Manager"]
+                Abuse["<b>AbuseIPDB API</b><br/>Confidence >20%"]
+                CDB[("<b>malicious-ip</b><br/>CDB Binary")]
+              end
+
+              Kali -.->|"Drops & Scans"| pfSense
+              Kali -.->|"Kerberos & SMB"| DC
+              pfSense -->|"BSD Syslog (514)"| WAZ
+              DC -.->|"Agent Logs"| WAZ
+              
+              WAZ -->|"Session >60s"| Abuse
+              Abuse -->|"Auto-Compile"| CDB
+              CDB -->|"pfctl Table Sync"| pfSense
+
+              classDef srv fill:#1e293b,stroke:#38bdf8,stroke-width:1.5px,color:#fff;
+              classDef sec fill:#0f172a,stroke:#f43f5e,stroke-width:1.5px,color:#fff;
+              class Kali,pfSense sec;
+              class DC,WAZ,Abuse,CDB srv;
+          </div>
+        </div>
       </div>
-      <p class="desc">A segmented <code>192.168.3.0/24</code> enterprise environment simulating Active Directory, rigorous firewall filtering, and automated host isolation.</p>
       
-      <div class="mermaid-container">
-        <div class="mermaid">
-          flowchart TD
-            Internet["Internet (VirtualBox NAT)"] --> pfSense["pitasense (.2)<br/>pfSense + Suricata + pfBlockerNG"]
-            pitakli["pitakli<br/>Kali Attack Box"] -.->|Adversary Emulation| pfSense
-            pfSense --> DC["PtaSDC (.10)<br/>Samba AD DC (Ubuntu)"]
-            pfSense --> WIN["Windows Client<br/>Domain Member + Agent"]
-            pfSense --> UB["Ubuntu Client<br/>Domain Member + Agent"]
-            pfSense --> WAZ["pitawazuh (.11)<br/>Wazuh Manager"]
-            
-            DC -.->|Event Logs| WAZ
-            WIN -.->|Sysmon & Agent| WAZ
-            UB -.->|Auditd & Agent| WAZ
-            pfSense -.->|Syslog 514/tcp| WAZ
-
-            classDef srv fill:#1e293b,stroke:#38bdf8,stroke-width:2px,color:#fff;
-            classDef sec fill:#0f172a,stroke:#f43f5e,stroke-width:2px,color:#fff;
-            class DC,WIN,UB,WAZ srv;
-            class pfSense,pitakli sec;
+      <!-- Proof Gallery for Project 1 -->
+      <div class="proof-section">
+        <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><circle cx="12" cy="12" r="3"/></svg> Live Execution Telemetry</h3>
+        <div class="proof-gallery">
+          <figure>
+            <!-- User image reference -->
+            <a href="Auto_IP_scan_2.png" target="_blank"><img src="Auto_IP_scan_2.png" alt="Wazuh Document Details - Rule 100410"></a>
+            <figcaption>Wazuh SIEM correctly decoding BSD filterlog headers and extracting pfSense dropped IPs.</figcaption>
+          </figure>
+          <figure>
+            <!-- User image reference -->
+            <a href="Auto_IP_scan.png" target="_blank"><img src="Auto_IP_scan.png" alt="AbuseIPDB List Output"></a>
+            <figcaption>AbuseIPDB automated integration returning a 100% confidence score for the attacking IP.</figcaption>
+          </figure>
         </div>
       </div>
-
-      <div class="details-section" style="margin-top: 1.5rem;">
-        <h3 style="color:#fff; font-size:1.05rem; margin-bottom:0.75rem;">Firewall Policy &amp; Defense Highlights</h3>
-        <div class="feature-bullets">
-          <div class="feature-item">
-            <div class="feature-marker"></div>
-            <div>
-              <strong>Segmentation:</strong> pfBlockerNG threat lists evaluated first, followed by explicit pinholes for Kerberos (88), LDAP/S (389/636), and SMB (445).
-            </div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-marker"></div>
-            <div>
-              <strong>Active Response:</strong> Automated containment executing <code>firewall-drop</code> and <code>host-deny</code> for 60 seconds on custom Wazuh rule triggers.
-            </div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-marker"></div>
-            <div>
-              <strong>Integrity &amp; Posture:</strong> FIM monitoring critical system directories (<code>/etc</code>, <code>/bin</code>, <code>/boot</code>) with continuous SCA benchmarks.
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    </article>
 
     <!-- Project 2 -->
-    <section class="card">
-      <div class="project-header">
-        <div class="title-with-icon">
-          <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-          <h2>Project 2: Honeypot to Firewall Threat-Feed Pipeline</h2>
+    <article class="project-card">
+      <div class="project-grid">
+        <div class="project-content">
+          <div class="category-badge badge-purple">AI-Driven SOC &amp; SOAR</div>
+          <h2 class="project-title">Autonomous Local AI SOC Analyst</h2>
+          <p class="project-desc">A private, on-premises AI incident response pipeline utilizing a local LLM to digest live SIEM alerts, map MITRE ATT&amp;CK tactics, generate professional incident reports, and enforce zero-touch firewall isolation.</p>
+          
+          <ul class="achievements">
+            <li>
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <div>
+                <strong>Private Local AI Triage</strong>
+                <span>Dispatches SIEM alerts to a local Ollama instance (Llama 3), classifying alerts without exposing sensitive telemetry to cloud APIs.</span>
+              </div>
+            </li>
+            <li>
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <div>
+                <strong>MITRE ATT&amp;CK Mapping</strong>
+                <span>Autonomously identifies IOAs/IOCs and contextualizes adversary behavior (e.g., T1110 Brute Force, T1046 Network Service Discovery).</span>
+              </div>
+            </li>
+            <li>
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <div>
+                <strong>Zero-Touch Active Response &amp; Whitelisting</strong>
+                <span>Executes kernel packet filtering directly on pfSense via passwordless SSH, protected by fail-safe logic to prevent core infrastructure isolation.</span>
+              </div>
+            </li>
+            <li>
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <div>
+                <strong>SIEM Loopback &amp; Reporting</strong>
+                <span>Generates Markdown incident reports locally while streaming AI verdicts back into the Wazuh Dashboard as native alerts via custom JSON ingestion.</span>
+              </div>
+            </li>
+          </ul>
         </div>
-        <span class="badge">Threat Intelligence</span>
-      </div>
-      <p class="desc">Automated intelligence loop translating raw AWS honeypot probes into dynamic, actionable firewall blocking at the perimeter.</p>
-      
-      <div class="mermaid-container diagram-center">
-        <img src="assets/images/honeypot-pipeline.svg" alt="Threat Intelligence Pipeline" style="max-width:100%; height:auto; display:block; margin:0 auto; border-radius:6px;">
-      </div>
+        
+        <div class="project-visual">
+          <div class="mermaid">
+            flowchart TD
+              subgraph Input ["Alert Pipeline"]
+                Log["<b>alerts.json</b><br/>(Severity 6+)"]
+              end
+              
+              subgraph AI ["Local AI Orchestration"]
+                Agent["<b>soc_ai_agent.py</b><br/>(Daemon)"]
+                LLM["<b>Ollama Llama 3</b><br/>(Local Inference)"]
+              end
+              
+              subgraph Output ["Enforcement & Reporting"]
+                FW["<b>pfSense</b><br/>Block Table"]
+                Rep["<b>Markdown</b><br/>Report"]
+                Dash["<b>Wazuh</b><br/>Dashboard"]
+              end
 
-      <div class="details-section" style="margin-top: 1.5rem;">
-        <h3 style="color:#fff; font-size:1.05rem; margin-bottom:0.75rem;">Pipeline Workflow</h3>
-        <div class="feature-bullets">
-          <div class="feature-item">
-            <div class="feature-marker"></div>
-            <div>
-              <strong>1. Capture:</strong> T-Pot honeypot on AWS logs incoming attack probes across exposed vectors.
-            </div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-marker"></div>
-            <div>
-              <strong>2. Verify:</strong> Python script queries AbuseIPDB API; keeps malicious IPs with &gt;90% confidence.
-            </div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-marker"></div>
-            <div>
-              <strong>3. Publish:</strong> Docker container serves <code>malicious_ips.txt</code> over HTTP (port 8080).
-            </div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-marker"></div>
-            <div>
-              <strong>4. Block:</strong> FortiGate external threat feed consumes the list to enforce a WAN-to-LAN DENY policy.
-            </div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-marker"></div>
-            <div>
-              <strong>5. Alert:</strong> Wazuh rule 100200 fires alerts on inbound connection attempts matching the feed.
-            </div>
+              Log -->|"Tail Events"| Agent
+              Agent <-->|"JSON Schema"| LLM
+              
+              Agent -->|"Ed25519 SSH"| FW
+              Agent -->|"Save to Disk"| Rep
+              Agent -->|"Log Loopback"| Dash
+
+              classDef core fill:#0f172a,stroke:#38bdf8,stroke-width:1.5px,color:#fff;
+              classDef ai fill:#3b0764,stroke:#d946ef,stroke-width:1.5px,color:#fff;
+              classDef action fill:#064e3b,stroke:#10b981,stroke-width:1.5px,color:#fff;
+              
+              class Log core;
+              class Agent,LLM ai;
+              class FW,Rep,Dash action;
           </div>
         </div>
       </div>
-    </section>
+      
+      <!-- Proof Gallery for Project 2 -->
+      <div class="proof-section">
+        <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><circle cx="12" cy="12" r="3"/></svg> Autonomous AI Execution Proofs</h3>
+        <div class="proof-gallery">
+          <figure>
+            <!-- User image reference -->
+            <a href="Wazuh_Ai_reulst_from_server.jpg" target="_blank"><img src="Wazuh_Ai_reulst_from_server.jpg" alt="Python AI Triage Engine"></a>
+            <figcaption>soc_ai_agent.py parsing attacks, assigning MITRE T1110, and dynamically protecting core IPs via whitelist.</figcaption>
+          </figure>
+          <figure>
+            <!-- User image reference -->
+            <a href="SOC_Ai_report.png" target="_blank"><img src="SOC_Ai_report.png" alt="Generated Markdown Report"></a>
+            <figcaption>Llama 3 outputting fully structured professional Markdown incident reports automatically.</figcaption>
+          </figure>
+          <figure>
+            <!-- User image reference -->
+            <a href="Wazuh_Ai_reulst.jpg" target="_blank"><img src="Wazuh_Ai_reulst.jpg" alt="Wazuh Dashboard AI Loopback"></a>
+            <figcaption>AI incident verdicts seamlessly fed back into the Wazuh SIEM Dashboard via Rule 100600.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </article>
 
   </main>
 
   <footer class="container">
     <div class="footer-content">
-      <p>Built with modern web standards • Yosef Moshe • Network &amp; Security Portfolio</p>
+      <p>Built with modern web standards • Yosef Moshe • Security Engineering Portfolio</p>
       <div class="footer-links">
-        <a href="https://yms689.github.io/Yosef_Moshe_Portfolio" target="_blank">GitHub</a> •
+        <a href="https://github.com/yms689/Yosef_Moshe_Portfolio" target="_blank">GitHub</a> •
         <a href="https://www.credly.com/users/yosef-moshe" target="_blank">Credly Profile</a>
       </div>
     </div>
