@@ -4,94 +4,204 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Yosef Moshe | IT Infrastructure & Enterprise Networking</title>
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="css/style.css">
   <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-  <script>mermaid.initialize({startOnLoad:true, theme: 'dark'});</script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'dark',
+      themeVariables: {
+        darkMode: true,
+        background: '#090d16',
+        primaryColor: '#1e293b',
+        primaryTextColor: '#f8fafc',
+        primaryBorderColor: '#38bdf8',
+        lineColor: '#64748b',
+        secondaryColor: '#0f172a',
+        tertiaryColor: '#111827'
+      }
+    });
+  </script>
 </head>
 <body>
 
-  <header class="container">
+  <!-- Background Ambient Glow -->
+  <div class="ambient-glow"></div>
+
+  <header class="container header-container">
     <div class="header-content">
+      <div class="profile-meta">
+        <span class="status-indicator"><span class="status-dot"></span> Production Homelab Telemetry</span>
+      </div>
       <h1>Yosef Moshe</h1>
       <p class="subtitle">IT Specialist & Enterprise Infrastructure Engineering</p>
       
       <!-- Top Navigation -->
       <nav class="portfolio-nav">
-        <a href="index.html" class="nav-btn">🛡️ SOC & Security Engineering</a>
-        <a href="it-networking.html" class="nav-btn active">🌐 IT Infrastructure & Networking</a>
+        <a href="index.html" class="nav-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          SOC & Security Engineering
+        </a>
+        <a href="it-networking.html" class="nav-btn active">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          IT Infrastructure & Networking
+        </a>
       </nav>
 
       <div class="tags">
-        <span>pitasense (pfSense 23.3)</span><span>Suricata 7.0.8</span><span>pfBlockerNG</span>
-        <span>Samba 4 AD DC</span><span>GPO / RSAT</span><span>syslog-ng Pipeline</span><span>Wazuh SIEM</span>
+        <span>pitasense (pfSense 23.3)</span>
+        <span>Suricata 7.0.8</span>
+        <span>pfBlockerNG</span>
+        <span>Samba 4 AD DC</span>
+        <span>GPO / RSAT</span>
+        <span>syslog-ng Pipeline</span>
+        <span>Wazuh SIEM</span>
       </div>
     </div>
   </header>
 
   <main class="container">
 
+    <!-- Section 0: Verified Credentials & Credly Badges -->
+    <section class="card credly-section">
+      <div class="project-header">
+        <div class="title-with-icon">
+          <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+          <h2>Professional Certifications & Validated Skills</h2>
+        </div>
+        <a href="https://www.credly.com/users/YOUR-CREDLY-USERNAME" target="_blank" rel="noopener noreferrer" class="badge-link">
+          Verify on Credly ↗
+        </a>
+      </div>
+      <p class="desc">Official digital badges and certifications verified via Credly and respective accreditation bodies.</p>
+
+      <div class="cert-grid">
+        <!-- Cisco CCNA -->
+        <div class="cert-card">
+          <div class="cert-logo-wrapper">
+            <span class="cert-emoji">🌐</span>
+          </div>
+          <div class="cert-info">
+            <h3>Cisco Certified Network Associate (CCNA)</h3>
+            <p class="cert-issuer">Cisco • Routing, Switching & Network Automation</p>
+            <div class="cert-meta">
+              <span class="cert-pill">Routing & Switching</span>
+              <span class="cert-pill">IP Services</span>
+              <span class="cert-pill">Security Fundamentals</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CompTIA Linux+ -->
+        <div class="cert-card">
+          <div class="cert-logo-wrapper">
+            <span class="cert-emoji">🐧</span>
+          </div>
+          <div class="cert-info">
+            <h3>CompTIA Linux+</h3>
+            <p class="cert-issuer">CompTIA • Linux Kernel, System Admin & Shell Ops</p>
+            <div class="cert-meta">
+              <span class="cert-pill">Linux Kernel</span>
+              <span class="cert-pill">Storage & Storage Layout</span>
+              <span class="cert-pill">Security & Bash</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Google Cloud Cybersecurity -->
+        <div class="cert-card">
+          <div class="cert-logo-wrapper">
+            <span class="cert-emoji">☁️</span>
+          </div>
+          <div class="cert-info">
+            <h3>Google Cloud Cybersecurity Professional</h3>
+            <p class="cert-issuer">Google • Threat Intelligence, SIEM & IAM</p>
+            <div class="cert-meta">
+              <span class="cert-pill">Cloud Security</span>
+              <span class="cert-pill">Threat Detection</span>
+              <span class="cert-pill">IAM Architecture</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Section 1: Architecture Topology -->
     <section class="card">
       <div class="project-header">
-        <h2>Enterprise Lab Topology & Identity Architecture</h2>
+        <div class="title-with-icon">
+          <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          <h2>Enterprise Lab Topology & Identity Architecture</h2>
+        </div>
         <span class="badge">pitaworld.pita</span>
       </div>
       <p class="desc">A fully isolated virtualized enterprise infrastructure featuring stateful pfSense routing, automated threat feed filtering, a Linux-native Samba Active Directory DC, and centralized policy enforcement.</p>
       
-      <div class="mermaid">
-        flowchart TB
-          subgraph WAN_EXT ["Perimeter & Ingress"]
-            EXT["Internet (VirtualBox NAT)"]
-          end
+      <div class="mermaid-container">
+        <div class="mermaid">
+          flowchart TB
+            subgraph WAN_EXT ["Perimeter & Ingress"]
+              EXT["Internet (VirtualBox NAT)"]
+            end
 
-          subgraph PERIMETER ["Stateful Firewall: pitasense.pitaworld.pita"]
-            direction TB
-            PFS_CORE["pitasense (192.168.3.2)<br/>• WAN: em0 (DHCP) | LAN: em1 (192.168.3.2/24)<br/>• DHCP Pool: .13 - .245 | Kea DHCP Backend"]
-            SURICATA["Suricata 7.0.8 (em1)<br/>• EVE JSON Logging<br/>• ET Open + Snort Community Rules"]
-            PFBLOCKER["pfBlockerNG-devel<br/>• Feodo C2, Abuse SSLBL, CINS Army<br/>• Spamhaus DROP, Talos BL, AlienVault"]
-            SYSLOG_NG["syslog-ng Daemon<br/>• Aggregates filter.log + eve.json<br/>• Secure TCP forward to .11"]
-            PFS_CORE --- SURICATA
-            PFS_CORE --- PFBLOCKER
-            SURICATA --> SYSLOG_NG
-          end
+            subgraph PERIMETER ["Stateful Firewall: pitasense.pitaworld.pita"]
+              direction TB
+              PFS_CORE["pitasense (192.168.3.2)<br/>• WAN: em0 (DHCP) | LAN: em1 (192.168.3.2/24)<br/>• DHCP Pool: .13 - .245 | Kea DHCP Backend"]
+              SURICATA["Suricata 7.0.8 (em1)<br/>• EVE JSON Logging<br/>• ET Open + Snort Community Rules"]
+              PFBLOCKER["pfBlockerNG-devel<br/>• Feodo C2, Abuse SSLBL, CINS Army<br/>• Spamhaus DROP, Talos BL, AlienVault"]
+              SYSLOG_NG["syslog-ng Daemon<br/>• Aggregates filter.log + eve.json<br/>• Secure TCP forward to .11"]
+              PFS_CORE --- SURICATA
+              PFS_CORE --- PFBLOCKER
+              SURICATA --> SYSLOG_NG
+            end
 
-          subgraph CORE_INFRA ["Subnet 192.168.3.0/24 (Static DHCP Leases)"]
-            DC["pitadc (192.168.3.10)<br/>• MAC: 08:00:27:bf:ba:57<br/>• Samba 4 Active Directory DC<br/>• Kerberos (88), LDAP/S (389/636)<br/>• SYSVOL GPO Store"]
-            SIEM["siemserver (192.168.3.11)<br/>• MAC: 08:00:27:5b:76:49<br/>• Wazuh Manager & Indexer<br/>• Syslog Collector & Active Response"]
-          end
+            subgraph CORE_INFRA ["Subnet 192.168.3.0/24 (Static DHCP Leases)"]
+              DC["pitadc (192.168.3.10)<br/>• MAC: 08:00:27:bf:ba:57<br/>• Samba 4 Active Directory DC<br/>• Kerberos (88), LDAP/S (389/636)<br/>• SYSVOL GPO Store"]
+              SIEM["siemserver (192.168.3.11)<br/>• MAC: 08:00:27:5b:76:49<br/>• Wazuh Manager & Indexer<br/>• Syslog Collector & Active Response"]
+            end
 
-          subgraph ENDPOINTS ["Managed Fleet & Domain Members"]
-            WIN_SRV["WinServer-Member (.20)<br/>• Windows Server 2022<br/>• Domain Member & Core Roles"]
-            WIN_CLI["WinClient-Workstation<br/>• Windows 10/11 Client<br/>• GPO Enforced (LAPS, Audit ID 4688)"]
-            UB_CLI["Ubuntu-Workstation<br/>• Linux Domain Member (SSSD/PAM)<br/>• Kerberos Ticket Auth"]
-          end
+            subgraph ENDPOINTS ["Managed Fleet & Domain Members"]
+              WIN_SRV["WinServer-Member (.20)<br/>• Windows Server 2022<br/>• Domain Member & Core Roles"]
+              WIN_CLI["WinClient-Workstation<br/>• Windows 10/11 Client<br/>• GPO Enforced (LAPS, Audit ID 4688)"]
+              UB_CLI["Ubuntu-Workstation<br/>• Linux Domain Member (SSSD/PAM)<br/>• Kerberos Ticket Auth"]
+            end
 
-          EXT --> PFS_CORE
-          PFS_CORE --> DC
-          PFS_CORE --> SIEM
-          PFS_CORE --> WIN_SRV
-          PFS_CORE --> WIN_CLI
-          PFS_CORE --> UB_CLI
+            EXT --> PFS_CORE
+            PFS_CORE --> DC
+            PFS_CORE --> SIEM
+            PFS_CORE --> WIN_SRV
+            PFS_CORE --> WIN_CLI
+            PFS_CORE --> UB_CLI
 
-          SYSLOG_NG ==>|Forwarding TCP/514| SIEM
-          DC -->|Kerberos Ticket & GPO Push| WIN_CLI
-          DC -->|SYSVOL Replication & Auth| WIN_SRV
-          DC -->|SSSD LDAP/Kerberos| UB_CLI
+            SYSLOG_NG ==>|Forwarding TCP/514| SIEM
+            DC -->|Kerberos Ticket & GPO Push| WIN_CLI
+            DC -->|SYSVOL Replication & Auth| WIN_SRV
+            DC -->|SSSD LDAP/Kerberos| UB_CLI
 
-          classDef fw fill:#0f172a,stroke:#38bdf8,stroke-width:2px,color:#fff;
-          classDef srv fill:#1e293b,stroke:#a855f7,stroke-width:2px,color:#fff;
-          classDef client fill:#1e293b,stroke:#22c55e,stroke-width:1.5px,color:#fff;
-          class PFS_CORE,SURICATA,PFBLOCKER,SYSLOG_NG fw;
-          class DC,SIEM,WIN_SRV srv;
-          class WIN_CLI,UB_CLI client;
+            classDef fw fill:#0f172a,stroke:#38bdf8,stroke-width:2px,color:#fff;
+            classDef srv fill:#1e293b,stroke:#a855f7,stroke-width:2px,color:#fff;
+            classDef client fill:#1e293b,stroke:#10b981,stroke-width:1.5px,color:#fff;
+            class PFS_CORE,SURICATA,PFBLOCKER,SYSLOG_NG fw;
+            class DC,SIEM,WIN_SRV srv;
+            class WIN_CLI,UB_CLI client;
+        </div>
       </div>
     </section>
 
     <!-- Section 2: Real pfSense XML Policy Engine -->
     <section class="card">
       <div class="project-header">
-        <h2>pfSense Production Ruleset & Threat-Feed Enforcement</h2>
-        <span class="badge">Exported pfSense 23.3 Backup</span>
+        <div class="title-with-icon">
+          <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <h2>pfSense Production Ruleset & Threat-Feed Enforcement</h2>
+        </div>
+        <span class="badge">pfSense 23.3 Backup Engine</span>
       </div>
       <p class="desc">Directly parsed from the active firewall configuration (<code>config-pitasense.pitaworld.pita-20250802154010.xml</code>). Threat-intelligence aliases evaluate first, followed by strict least-privilege pinholes.</p>
 
@@ -108,138 +218,161 @@
             </tr>
           </thead>
           <tbody>
-            <tr class="rule-reject">
-              <td><span class="badge-reject">REJECT</span></td>
-              <td><code>1770008303</code></td>
-              <td>ANY</td>
-              <td><code>pfB_PRI1_v4</code></td>
+            <tr class="row-reject">
+              <td><span class="status-pill pill-reject">REJECT</span></td>
+              <td><code class="code-tag">1770008303</code></td>
+              <td><span class="ip-tag">ANY</span></td>
+              <td><code class="alias-tag">pfB_PRI1_v4</code></td>
               <td>ANY (IPv4)</td>
               <td>Auto-drop outbound hits to Feodo C2, Abuse SSLBL, CINS Army, ET Block, Spamhaus & Talos</td>
             </tr>
-            <tr class="rule-block">
-              <td><span class="badge-block">BLOCK</span></td>
-              <td><code>1745167133</code></td>
-              <td><code>blocklist</code></td>
-              <td>ANY</td>
+            <tr class="row-block">
+              <td><span class="status-pill pill-block">BLOCK</span></td>
+              <td><code class="code-tag">1745167133</code></td>
+              <td><code class="alias-tag">blocklist</code></td>
+              <td><span class="ip-tag">ANY</span></td>
               <td>ANY (Floating)</td>
               <td>AlienVault reputation IP set suppression (Inbound / Outbound)</td>
             </tr>
-            <tr class="rule-pass">
-              <td><span class="badge-pass">PASS</span></td>
-              <td><code>1753624250</code></td>
-              <td>192.168.3.0/24</td>
-              <td>192.168.3.2 (pitasense)</td>
+            <tr class="row-pass">
+              <td><span class="status-pill pill-pass">PASS</span></td>
+              <td><code class="code-tag">1753624250</code></td>
+              <td><span class="ip-tag">192.168.3.0/24</span></td>
+              <td><span class="ip-tag">192.168.3.2</span> (pitasense)</td>
               <td>53 (TCP/UDP)</td>
               <td>DNS solve for domain (Unbound DNS with DNSBL integration)</td>
             </tr>
-            <tr class="rule-pass">
-              <td><span class="badge-pass">PASS</span></td>
-              <td><code>1753545822</code></td>
-              <td>192.168.3.0/24</td>
-              <td>192.168.3.10 (pitadc)</td>
+            <tr class="row-pass">
+              <td><span class="status-pill pill-pass">PASS</span></td>
+              <td><code class="code-tag">1753545822</code></td>
+              <td><span class="ip-tag">192.168.3.0/24</span></td>
+              <td><span class="ip-tag">192.168.3.10</span> (pitadc)</td>
               <td>88 (TCP/UDP)</td>
               <td>Kerberos V5 Active Directory authentication tokens</td>
             </tr>
-            <tr class="rule-pass">
-              <td><span class="badge-pass">PASS</span></td>
-              <td><code>1753545671</code></td>
-              <td>192.168.3.0/24</td>
-              <td>192.168.3.10 (pitadc)</td>
+            <tr class="row-pass">
+              <td><span class="status-pill pill-pass">PASS</span></td>
+              <td><code class="code-tag">1753545671</code></td>
+              <td><span class="ip-tag">192.168.3.0/24</span></td>
+              <td><span class="ip-tag">192.168.3.10</span> (pitadc)</td>
               <td>389-636 (TCP)</td>
               <td>LDAP / LDAPS directory access for domain account queries</td>
             </tr>
-            <tr class="rule-pass">
-              <td><span class="badge-pass">PASS</span></td>
-              <td><code>1753545909</code></td>
-              <td>192.168.3.0/24</td>
-              <td>192.168.3.10 (pitadc)</td>
+            <tr class="row-pass">
+              <td><span class="status-pill pill-pass">PASS</span></td>
+              <td><code class="code-tag">1753545909</code></td>
+              <td><span class="ip-tag">192.168.3.0/24</span></td>
+              <td><span class="ip-tag">192.168.3.10</span> (pitadc)</td>
               <td>445 (TCP)</td>
               <td>SMB: Group Policy (GPO) propagation, SYSVOL & logon scripts</td>
             </tr>
-            <tr class="rule-pass">
-              <td><span class="badge-pass">PASS</span></td>
-              <td><code>1753546061</code></td>
-              <td>192.168.3.0/24</td>
-              <td>192.168.3.10 (pitadc)</td>
+            <tr class="row-pass">
+              <td><span class="status-pill pill-pass">PASS</span></td>
+              <td><code class="code-tag">1753546061</code></td>
+              <td><span class="ip-tag">192.168.3.0/24</span></td>
+              <td><span class="ip-tag">192.168.3.10</span> (pitadc)</td>
               <td>135-139 (TCP/UDP)</td>
               <td>RPC Endpoint Mapper & NetBIOS name resolution</td>
             </tr>
-            <tr class="rule-pass">
-              <td><span class="badge-pass">PASS</span></td>
-              <td><code>1753623884</code></td>
-              <td>192.168.3.0/24</td>
-              <td>192.168.3.2 (pitasense)</td>
+            <tr class="row-pass">
+              <td><span class="status-pill pill-pass">PASS</span></td>
+              <td><code class="code-tag">1753623884</code></td>
+              <td><span class="ip-tag">192.168.3.0/24</span></td>
+              <td><span class="ip-tag">192.168.3.2</span> (pitasense)</td>
               <td>5140 (TCP/UDP)</td>
               <td>Internal syslog-ng ingestion port</td>
             </tr>
-            <tr class="rule-pass">
-              <td><span class="badge-pass">PASS</span></td>
-              <td><code>1753547839</code></td>
-              <td>192.168.3.0/24</td>
-              <td>192.168.3.0/24</td>
+            <tr class="row-pass">
+              <td><span class="status-pill pill-pass">PASS</span></td>
+              <td><code class="code-tag">1753547839</code></td>
+              <td><span class="ip-tag">192.168.3.0/24</span></td>
+              <td><span class="ip-tag">192.168.3.0/24</span></td>
               <td>1510-1515 (TCP/UDP)</td>
               <td>Wazuh SIEM agent registration, control, and event shipping</td>
             </tr>
-            <tr class="rule-pass">
-              <td><span class="badge-pass">PASS</span></td>
-              <td><code>1753547861</code></td>
-              <td>192.168.3.0/24</td>
-              <td>192.168.3.0/24</td>
+            <tr class="row-pass">
+              <td><span class="status-pill pill-pass">PASS</span></td>
+              <td><code class="code-tag">1753547861</code></td>
+              <td><span class="ip-tag">192.168.3.0/24</span></td>
+              <td><span class="ip-tag">192.168.3.0/24</span></td>
               <td>55000 (TCP)</td>
               <td>Wazuh Manager RESTful API communication</td>
             </tr>
-            <tr class="rule-pass">
-              <td><span class="badge-pass">PASS</span></td>
-              <td><code>1753546095</code></td>
-              <td>192.168.3.0/24</td>
-              <td>ANY (WAN)</td>
-              <td><code>web_access</code> (80/443 TCP)</td>
+            <tr class="row-pass">
+              <td><span class="status-pill pill-pass">PASS</span></td>
+              <td><code class="code-tag">1753546095</code></td>
+              <td><span class="ip-tag">192.168.3.0/24</span></td>
+              <td><span class="ip-tag">ANY</span> (WAN)</td>
+              <td><code class="alias-tag">web_access</code> (80/443 TCP)</td>
               <td>Outbound HTTP / HTTPS access for operating system updates</td>
             </tr>
           </tbody>
         </table>
       </div>
-
-     
     </section>
 
     <!-- Section 3: Telemetry & syslog-ng Routing Pipeline -->
     <section class="card">
       <div class="project-header">
-        <h2>Perimeter Telemetry Pipeline: syslog-ng & Suricata to Wazuh</h2>
-        <span class="badge">syslog-ng Advanced Engine</span>
+        <div class="title-with-icon">
+          <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          <h2>Perimeter Telemetry Pipeline: syslog-ng & Suricata to Wazuh</h2>
+        </div>
+        <span class="badge">syslog-ng Engine</span>
       </div>
       <p class="desc">pfSense runs <code>syslog-ng</code> to tap both kernel firewall drop logs and Suricata IDS EVE JSON telemetry, routing them over encrypted transport directly into the SIEM manager.</p>
 
-      <pre><code># syslog-ng destination & route mapping from pitasense backup
-destination d_wazuh {
-    network("192.168.3.11" transport(tcp) localip(192.168.3.2));
+      <div class="terminal-block">
+        <div class="terminal-bar">
+          <div class="terminal-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <span class="terminal-title">/usr/local/etc/syslog-ng.conf</span>
+        </div>
+        <pre><code><span class="c-comment"># syslog-ng destination & route mapping from pitasense backup</span>
+<span class="c-keyword">destination</span> d_wazuh {
+    <span class="c-func">network</span>(<span class="c-str">"192.168.3.11"</span> transport(tcp) localip(<span class="c-str">"192.168.3.2"</span>));
 };
 
-source s_pfsense_logs {
-    file("/var/log/filter.log");
-    file("/var/log/system.log");
+<span class="c-keyword">source</span> s_pfsense_logs {
+    <span class="c-func">file</span>(<span class="c-str">"/var/log/filter.log"</span>);
+    <span class="c-func">file</span>(<span class="c-str">"/var/log/system.log"</span>);
 };
 
-source s_suricata {
-    file("/var/log/suricata/suricata_em142983/eve.json" follow_freq(1) flags(no-parse));
+<span class="c-keyword">source</span> s_suricata {
+    <span class="c-func">file</span>(<span class="c-str">"/var/log/suricata/suricata_em142983/eve.json"</span> follow_freq(1) flags(no-parse));
 };
 
-log { source(s_pfsense_logs); destination(d_wazuh); };
-log { source(s_suricata); destination(d_wazuh); };</code></pre>
+<span class="c-keyword">log</span> { source(s_pfsense_logs); destination(d_wazuh); };
+<span class="c-keyword">log</span> { source(s_suricata); destination(d_wazuh); };</code></pre>
+      </div>
     </section>
 
     <!-- Section 4: Samba Active Directory & GPO Deployment -->
     <section class="card">
       <div class="project-header">
-        <h2>Samba-DC on Linux: GPO Deployment & Enterprise Management</h2>
+        <div class="title-with-icon">
+          <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <h2>Samba-DC on Linux: GPO Deployment & Enterprise Management</h2>
+        </div>
         <span class="badge">Identity & Access Management</span>
       </div>
       <p class="desc">A full Active Directory Domain Controller deployed on Ubuntu Linux using Samba 4. Windows Server operates as an infrastructure member server, while domain workstations receive continuous policy enforcement from the Linux SYSVOL share.</p>
 
-      <div class="details">
+      <div class="details-section">
         <h3>1. Samba AD DC smb.conf (pitaworld.pita)</h3>
-        <pre><code>[global]
+        <div class="terminal-block">
+          <div class="terminal-bar">
+            <div class="terminal-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <span class="terminal-title">/etc/samba/smb.conf</span>
+          </div>
+          <pre><code><span class="c-section">[global]</span>
     netbios name = PTASDC
     realm = PITAWORLD.PITA
     workgroup = PITAWORLD
@@ -247,25 +380,51 @@ log { source(s_suricata); destination(d_wazuh); };</code></pre>
     dns forwarder = 192.168.3.2
     idmap_ldb:use rfc2307 = yes
 
-[sysvol]
+<span class="c-section">[sysvol]</span>
     path = /var/lib/samba/sysvol
     read only = No
 
-[netlogon]
+<span class="c-section">[netlogon]</span>
     path = /var/lib/samba/sysvol/pitaworld.pita/scripts
     read only = No</code></pre>
+        </div>
       </div>
 
-      <div class="details" style="margin-top: 1.5rem;">
+      <div class="details-section" style="margin-top: 2rem;">
         <h3>2. Group Policy (GPO) Architecture & Client Verification</h3>
-        <p class="subtext">GPOs managed from RSAT are stored within the Samba SYSVOL share, enforcing audit telemetry and endpoint hardening across domain-joined Windows machines:</p>
-        <ul>
-          <li><strong>Audit Process Creation (Event 4688):</strong> Enforces command-line argument logging across endpoints, generating high-fidelity telemetry for Wazuh.</li>
-          <li><strong>LAPS Policy:</strong> Rotates local administrator passwords automatically, preventing lateral credential harvesting.</li>
-          <li><strong>Verification:</strong> Running <code>gpresult /r</code> on client endpoints confirms policy retrieval from <code>PTASDC</code> over port 445:</li>
-        </ul>
+        <p class="subtext">GPOs managed from RSAT are stored directly within the Samba SYSVOL share, enforcing audit telemetry and endpoint hardening across domain-joined Windows machines:</p>
+        
+        <div class="feature-bullets">
+          <div class="feature-item">
+            <div class="feature-marker"></div>
+            <div>
+              <strong>Audit Process Creation (Event 4688):</strong> Enforces full command-line argument logging across endpoints, generating high-fidelity telemetry for Wazuh.
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-marker"></div>
+            <div>
+              <strong>LAPS Policy:</strong> Rotates local administrator passwords automatically, preventing lateral credential harvesting.
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-marker"></div>
+            <div>
+              <strong>Client Verification:</strong> Running <code>gpresult /r</code> on client endpoints confirms policy retrieval from <code>PTASDC</code> over port 445.
+            </div>
+          </div>
+        </div>
 
-        <pre><code>C:\Users\yosef> gpresult /r
+        <div class="terminal-block" style="margin-top: 1rem;">
+          <div class="terminal-bar">
+            <div class="terminal-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <span class="terminal-title">Command Prompt - Windows 11 Enterprise (Client-10)</span>
+          </div>
+          <pre><code><span class="c-prompt">C:\Users\yosef&gt;</span> gpresult /r
 
 Applied Group Policy Objects
 -----------------------------
@@ -276,13 +435,20 @@ LAPS_Enforcement_Policy
 The user is a part of the following security groups:
     PITAWORLD\Domain Users
     PITAWORLD\Enterprise Admins</code></pre>
+        </div>
       </div>
     </section>
 
   </main>
 
   <footer class="container">
-    <p>Built with GitHub Pages • Yosef Moshe • Network & Security Portfolio</p>
+    <div class="footer-content">
+      <p>Built with modern web standards • Yosef Moshe • Network & Security Portfolio</p>
+      <div class="footer-links">
+        <a href="https://yms689.github.io/Yosef_Moshe_Portfolio" target="_blank">GitHub</a> •
+        <a href="https://www.credly.com/users/yosef-moshe" target="_blank">Credly Profile</a>
+      </div>
+    </div>
   </footer>
 
 </body>
